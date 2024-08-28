@@ -6,10 +6,19 @@ const multer = require("multer");
 const axios = require("axios");
 const path = require("path");
 const fs = require("fs");
+const cors = require("cors");
+const corsConfig = {
+  origin: "*"
+  credential: true,
+  methods: [GET, POST, ]
+};
+
 //const port = 3000;
 
 // Apply middleware
 configureMiddleware(app);
+
+app.use(cors(corsConfig));
 
 app.get("/", (req, res) => {
   res.send(
